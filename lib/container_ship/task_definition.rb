@@ -13,8 +13,8 @@ module ContainerShip
     def to_h
       task_definition_hash
         .merge(
-          container_definitions: main_container_definition.map do |d|
-            next d unless d[:image].include?('<image_number>')
+          container_definitions: task_definition_hash[:container_definitions].map do |d|
+            next d unless d[:essential]
 
             d.merge(name: full_name, image: "#{image_name}:#{@build_number}")
           end
