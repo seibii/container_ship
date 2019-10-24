@@ -8,7 +8,7 @@
 
 `container_ship` is yet another ECS deployment tool.
 
-Key features are:
+## Key features
 
 - Using raw `task_definition.json` file instead of a template file with complex state or variables
 - Convention over configuration 
@@ -19,9 +19,17 @@ gem 'container_ship'
 ```
 
 ## Usage
-### Prepare task_definition.json
-`container_ship init YOUR_CLUSTER_NAME` will create empty directory for you.
-And you must put `task_definition.json` file in directories like below. 
+### Prepare Dockerfile
+You need to put `Dockerfile` in your app root directory.
+And all the services/tasks will use the image built with that.
+
+### Prepare task_definition.json and Dockerfile
+
+```sh
+container_ship init YOUR_CLUSTER_NAME
+```
+
+will create empty directory for you. And you must put `task_definition.json` file in directories like below. 
 
 ``` 
 your_app
