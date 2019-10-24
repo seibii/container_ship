@@ -10,7 +10,7 @@
 
 Key features are:
 
-- Using raw `task_definition.json` file not a template file with complex state or variables
+- Using raw `task_definition.json` file instead of a template file with complex state or variables
 - Convention over configuration 
 
 ## Installation
