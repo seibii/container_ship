@@ -10,7 +10,12 @@ module ContainerShip
         private
 
         def sh(command)
-          Open3.popen3(command) { |_i, o, _e, _w| o.each { |line| puts line } }
+          status = nil
+          Open3.popen3(command) do |_i, o, _e, w|
+            o.each { |line| puts line }
+            status = w.value
+          end
+          exit(status.exit_status) unless status.success?
         end
       end
     end
