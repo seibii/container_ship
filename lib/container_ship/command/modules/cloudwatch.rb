@@ -1,3 +1,5 @@
+require 'aws-sdk-cloudwatchlogs'
+
 module ContainerShip
   module Command
     module Modules
