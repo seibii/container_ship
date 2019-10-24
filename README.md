@@ -60,17 +60,17 @@ You must obey `convention over configuration` concept. So, naming convention is 
 
 And export your ECR repository root uri.
 
-```
+```sh
 export ECR_REPOSITORY=xxxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/
 ```
 
 ### Deploy a service
-```
+```sh
 container_ship ship CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER
 ```
 
 ### Run a task
-```
+```sh
 container_ship exec CLUSTER_NAME TASK_NAME ENVIRONMENT BUILD_NUMBER
 ```
   
