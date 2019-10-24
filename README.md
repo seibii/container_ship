@@ -54,9 +54,9 @@ your_app
 ### Prepare ECS resources
 You must obey `convention over configuration` concept. So, naming convention is presented below.   
 
-- ECS cluster: "#{cluster_name}-#{environment}"
-- ECS service: "#{cluster_name}-#{service_name}-#{environment}"
-- ECS task:    "#{cluster_name}-#{task_name}-#{environment}"
+- ECS cluster: `"#{cluster_name}-#{environment}"`
+- ECS service: `"#{cluster_name}-#{service_name}-#{environment}"`
+- ECS task:    `"#{cluster_name}-#{task_name}-#{environment}"`
 
 And export your ECR repository root uri.
 
