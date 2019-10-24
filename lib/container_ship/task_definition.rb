@@ -13,6 +13,7 @@ module ContainerShip
     def to_h
       task_definition_hash
         .merge(
+          family: full_name,
           container_definitions: task_definition_hash[:container_definitions].map do |d|
             next d unless d[:essential]
 
