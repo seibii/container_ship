@@ -4,13 +4,14 @@ require 'open3'
 
 require 'container_ship/command/modules/docker'
 require 'container_ship/command/modules/ecs'
+require 'container_ship/command/modules/print_task'
 
 module ContainerShip
   module Command
     class ShipCommand
       include Modules::Docker
       include Modules::Ecs
-      include Moudles::PrintTask
+      include Modules::PrintTask
 
       def run(cluster_name, service_name, environment, build_number)
         task_definition = TaskDefinition.new(
