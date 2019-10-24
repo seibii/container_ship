@@ -1,38 +1,82 @@
-# ContainerShip
+# container_ship
+[![Gem Version](https://badge.fury.io/rb/container_ship.svg)](https://badge.fury.io/rb/container_ship)
+[![Circle CI](https://circleci.com/gh/seibii/container_ship.svg?style=shield)](https://circleci.com/gh/seibii/container_ship)
+[![Code Climate](https://codeclimate.com/github/seibii/container_ship/badges/gpa.svg)](https://codeclimate.com/github/seibii/container_ship)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/seibii/container_ship.svg)](https://libraries.io/github/seibii/container_ship)
+![](http://ruby-gem-downloads-badge.herokuapp.com/container_ship?type=total)
+![GitHub](https://img.shields.io/github/license/seibii/container_ship.svg)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/container_ship`. To experiment with that code, run `bin/console` for an interactive prompt.
+`container_ship` is yet another ECS deployment tool.
 
-TODO: Delete this and the text above, and describe your gem
+Key features are:
+
+- Using raw `task_definition.json` file not a template file with complex state or variables
+- Convention over configuration 
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
 ```ruby
 gem 'container_ship'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install container_ship
-
 ## Usage
+### Prepare task_definition.json
+`container_ship init YOUR_CLUSTER_NAME` will create empty directory for you.
+And you must put `task_definition.json` file in directories like below. 
 
-TODO: Write usage instructions here
+``` 
+your_app
+|-- .container_ship
+|    |-- your_cluster_name
+|    |    |-- services // ECS services 
+|    |    |    |-- your_service_name // like server or api
+|    |    |    |    |-- your_envrionment_name // like production or staging
+|    |    |    |    |    |-- task_definition.json
+|    |    |    |    |
+|    |    |    |    +-- your_other_environment_name
+|    |    |    |         |-- task_definition.json
+|    |    |    |    
+|    |    |    +-- your_other_service_name
+|    |    |
+|    |    |
+|    |    +-- tasks // ECS tasks
+|    |         |-- your_task_name ( like db-migrate or 
+|    |         |    |-- your_envrionment_name // like production or staging
+|    |         |    |    |-- task_definition.json
+|    |         |    |
+|    |         |    +-- your_other_environment_name
+|    |         |         |-- task_definition.json   
+|    |         +-- your_task_name ( like db-migrate or
+|    |
+|    +-- your_other_cluster_name
+|--...
+```
 
-## Development
+### Prepare ECS resources
+You must obey `convention over configuration` concept. So, naming convention is presented below.   
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+- ECS cluster: "#{cluster_name}-#{environment}"
+- ECS service: "#{cluster_name}-#{service_name}-#{environment}"
+- ECS task:    "#{cluster_name}-#{task_name}-#{environment}"
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+And export your ECR repository root uri.
 
+```
+export ECR_REPOSITORY=xxxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/
+```
+
+### Deploy a service
+```
+container_ship ship CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER
+```
+
+### Run a task
+```
+container_ship exec CLUSTER_NAME TASK_NAME ENVIRONMENT BUILD_NUMBER
+```
+  
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/unhappychoice/container_ship. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/seibii/container_ship. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +84,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the ContainerShip project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/unhappychoice/container_ship/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ContainerShip project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/seibii/container_ship/blob/master/CODE_OF_CONDUCT.md).
