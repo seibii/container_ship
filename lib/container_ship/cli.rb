@@ -13,6 +13,11 @@ module ContainerShip
       Command::ShipCommand.new.run(cluster_name, service_name, environment, build_number)
     end
 
+    desc 'exec CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER', 'exec specified task'
+    def exec(cluster_name, service_name, environment, build_number)
+      Command::ExecCommand.new.run(cluster_name, service_name, environment, build_number)
+    end
+
     desc 'version', 'display gem version'
     def version
       say ContainerShip::VERSION
