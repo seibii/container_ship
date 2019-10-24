@@ -69,11 +69,14 @@ export ECR_REPOSITORY=xxxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/
 container_ship ship CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER
 ```
 
+will deploy a service in `.container_ship/CLUSTER_NAME/services/SERVICE_NAME/ENVIRONMENT/taskdefinition.`
+
 ### Run a task
 ```sh
 container_ship exec CLUSTER_NAME TASK_NAME ENVIRONMENT BUILD_NUMBER
 ```
-  
+will run a task in `.container_ship/CLUSTER_NAME/tasks/TASK_NAME/ENVIRONMENT/taskdefinition.`
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/seibii/container_ship. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
