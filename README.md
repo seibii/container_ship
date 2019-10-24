@@ -77,13 +77,13 @@ export ECR_REPOSITORY=xxxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/
 container_ship ship CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER
 ```
 
-will deploy a service in `.container_ship/CLUSTER_NAME/services/SERVICE_NAME/ENVIRONMENT/taskdefinition.`
+will deploy a service in `.container_ship/CLUSTER_NAME/services/SERVICE_NAME/ENVIRONMENT/task_definition.json`
 
 ### Run a task
 ```sh
 container_ship exec CLUSTER_NAME TASK_NAME ENVIRONMENT BUILD_NUMBER
 ```
-will run a task in `.container_ship/CLUSTER_NAME/tasks/TASK_NAME/ENVIRONMENT/taskdefinition.`
+will run a task in `.container_ship/CLUSTER_NAME/tasks/TASK_NAME/ENVIRONMENT/task_definition.json`
 
 ## Contributing
 
