@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ContainerShip
   module Command
     class InitCommand
@@ -7,7 +9,7 @@ module ContainerShip
         FileUtils.mkdir_p(".container_ship/#{cluster_name}/services")
         puts "Created .container_ship/#{cluster_name}/services directory"
 
-        puts "Next: Create tasks_definition.json file to deploy in tasks or services directory 🖖🏻"
+        puts 'Next: Create tasks_definition.json file to deploy in tasks or services directory 🖖🏻'
       end
     end
   end

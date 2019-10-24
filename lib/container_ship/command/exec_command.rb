@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws-sdk-ecs'
 require 'json'
 require 'open3'
@@ -20,15 +22,15 @@ module ContainerShip
 
         push_image task_definition
 
-        revision = print_around_task("Registering task definition... ") do
+        revision = print_around_task('Registering task definition... ') do
           register task_definition
         end
 
-        task_arn = print_around_task("Sending task request... ") do
+        task_arn = print_around_task('Sending task request... ') do
           run_task task_definition, revision
         end
 
-        exit_status = print_around_task("Waiting task is completed... ") do
+        exit_status = print_around_task('Waiting task is completed... ') do
           wait_task task_definition, task_arn
         end
 

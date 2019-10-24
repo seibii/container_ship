@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ContainerShip
   module Command
     module Modules

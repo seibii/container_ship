@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ContainerShip
   module Command
     module Modules
@@ -47,13 +49,14 @@ module ContainerShip
 
         def do_every_5_seconds
           count = 0
-          while true
+          loop do
             sleep 3
             print '.'
             exit_status = yield
             count += 1
             next if exit_status.nil?
             return 124 if count > 60
+
             return exit_status
           end
         end

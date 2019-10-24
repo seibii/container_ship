@@ -1,15 +1,17 @@
-lib = File.expand_path("lib", __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "container_ship/version"
+# frozen_string_literal: true
 
-Gem::Specification.new do |spec|
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'container_ship/version'
+
+Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.name          = 'container_ship'
   spec.version       = ContainerShip::VERSION
   spec.authors       = ['Yuji Ueki']
   spec.email         = ['unhappychoice@gmail.com']
 
-  spec.summary       = %q{Yet another ECS deployment tool}
-  spec.description   = %q{container_ship is a simple ECS deployment tool. You only need to prepare Dockerfile and task_definition.json}
+  spec.summary       = 'Yet another ECS deployment tool'
+  spec.description   = 'container_ship is a simple ECS deployment tool. You only need to prepare Dockerfile and task_definition.json' # rubocop:disable Metrics/LineLength
   spec.homepage      = 'https://github.com/seibii/container_ship'
   spec.license       = 'MIT'
 
@@ -19,7 +21,7 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.bindir        = 'exe'

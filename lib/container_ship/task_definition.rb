@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ContainerShip
   class TaskDefinition
     attr_reader :cluster_name, :name, :environment, :build_number

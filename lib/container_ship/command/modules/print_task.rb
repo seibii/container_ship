@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ContainerShip
   module Command
     module Modules
@@ -7,7 +9,7 @@ module ContainerShip
         def print_around_task(message)
           print message
           result = yield
-          puts "Done"
+          puts 'Done'
           result
         end
       end
