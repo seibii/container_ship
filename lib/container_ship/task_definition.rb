@@ -43,10 +43,8 @@ module ContainerShip
     def log_stream_name(task_arn)
       return nil unless main_container_definition.dig(:log_configuration, :log_driver).to_s == 'awslogs'
 
-      task_name = main_container_definition.dig(:name)
       prefix = main_container_definition.dig(:log_configuration, :options, :'awslogs-stream-prefix')
-
-      "#{prefix}/#{task_name}/#{task_arn.split('/').last}"
+      "#{prefix}/#{full_name}/#{task_arn.split('/').last}"
     end
 
     private
