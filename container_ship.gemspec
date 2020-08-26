@@ -7,6 +7,7 @@ require 'container_ship/version'
 Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.name          = 'container_ship'
   spec.version       = ContainerShip::VERSION
+  spec.required_ruby_version = '>= 2.4'
   spec.authors       = ['Yuji Ueki']
   spec.email         = ['unhappychoice@gmail.com']
 
