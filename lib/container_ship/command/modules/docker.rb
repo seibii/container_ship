@@ -17,7 +17,7 @@ module ContainerShip
             o.each { |line| puts line }
             status = w.value
           end
-          exit(status.exit_status) unless status.success?
+          exit(status.exitstatus) unless status.success?
         end
       end
     end
