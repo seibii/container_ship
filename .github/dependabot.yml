@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+    timezone: Asia/Tokyo
+  open-pull-requests-limit: 20
+  reviewers:
+  - avexbesuke
+  - amatotsuji
+  - yuta-sanada0089
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+  ignore:
+  - dependency-name: codecov
+    versions:
+    - ">= 0.2.14.a, < 0.2.15"
+  - dependency-name: aws-partitions
+    versions:
+    - 1.431.0
+    - 1.433.0
+    - 1.437.0
+    - 1.448.0
+  - dependency-name: i18n
+    versions:
+    - 1.8.10
+  - dependency-name: aws-sigv4
+    versions:
+    - 1.2.3
+  - dependency-name: aws-eventstream
+    versions:
+    - 1.1.1
+  - dependency-name: aws-sdk-core
+    versions:
+    - 3.112.0
