@@ -30,8 +30,8 @@ module ContainerShip
             .task_arn
         end
 
-        def wait_task(task_definition, task_arn)
-          do_every_5_seconds do
+        def wait_task(task_definition, task_arn, timeout: nil)
+          do_every_5_seconds(timeout: timeout) do
             aws_ecs_client.describe_tasks(cluster: task_definition.full_cluster_name, tasks: [task_arn])
               .tasks
               .first
@@ -47,16 +47,21 @@ module ContainerShip
           @aws_ecs_client ||= Aws::ECS::Client.new
         end
 
-        def do_every_5_seconds
-          count = 0
+        def do_every_5_seconds(timeout: nil)
+          timeout ||= 300 # default is 5 minutes
+          start = Time.now
           loop do
             sleep 3
             print '.'
             exit_status = yield
-            count += 1
+            elapsed = Time.now - start
+            if elapsed > timeout
+              puts "Timeout! elapsed: #{elapsed} seconds"
+              return 124
+            end
             next if exit_status.nil?
-            return 124 if count > 60
 
+            puts "exit_code of wait_task is #{exit_status}"
             return exit_status
           end
         end

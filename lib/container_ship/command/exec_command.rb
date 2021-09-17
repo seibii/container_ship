@@ -17,7 +17,7 @@ module ContainerShip
       include Modules::Ecs
       include Modules::PrintTask
 
-      def run(cluster_name, task_name, environment, build_number)
+      def run(cluster_name, task_name, environment, build_number, timeout: nil)
         task_definition = TaskDefinition.new(cluster_name, 'tasks', task_name, environment, build_number)
 
         push_image task_definition
@@ -31,7 +31,7 @@ module ContainerShip
         end
 
         exit_status = print_around_task('Waiting task is completed... ') do
-          wait_task task_definition, task_arn
+          wait_task task_definition, task_arn, timeout: timeout
         end
 
         show_log task_definition, task_arn
