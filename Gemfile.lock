@@ -60,7 +60,7 @@ GEM
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    ffi (1.15.3)
+    ffi (1.15.4)
     formatador (0.3.0)
     github_changelog_generator (1.15.2)
       activesupport
@@ -90,7 +90,7 @@ GEM
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
-    listen (3.6.0)
+    listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lumberjack (1.2.8)
