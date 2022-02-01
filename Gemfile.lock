@@ -87,7 +87,7 @@ GEM
     guard-rubocop (1.4.0)
       guard (~> 2.0)
       rubocop (< 2.0)
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     listen (3.7.0)
