@@ -61,7 +61,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.4)
-    formatador (0.3.0)
+    formatador (1.1.0)
     github_changelog_generator (1.15.2)
       activesupport
       faraday-http-cache
