@@ -49,6 +49,16 @@ module ContainerShip
       "#{prefix}/#{full_name}/#{task_arn.split('/').last}"
     end
 
+    def run_task_options
+      @run_task_options ||= begin
+        if File.exists?(run_task_options_path)
+          JSON.parse(File.read(run_task_options_path), symbolize_names: true)
+        else
+          {}
+        end
+      end
+    end
+
     private
 
     def task_definition_hash
@@ -61,6 +71,10 @@ module ContainerShip
 
     def main_container_definition
       task_definition_hash[:container_definitions].find { |definition| definition[:essential] }
+    end
+
+    def run_task_options_path
+      File.join('.container_ship', @cluster_name, @type, @name, @environment, 'run_task_options.json')
     end
   end
 end
