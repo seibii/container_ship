@@ -23,7 +23,8 @@ module ContainerShip
           aws_ecs_client
             .run_task(
               cluster: task_definition.full_cluster_name,
-              task_definition: "#{task_definition.full_name}:#{revision}"
+              task_definition: "#{task_definition.full_name}:#{revision}",
+              **task_definition.run_task_options
             )
             .tasks
             .first
