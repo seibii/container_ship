@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    container_ship (0.1.3)
+    container_ship (0.1.4)
       aws-sdk-cloudwatchlogs
       aws-sdk-ecs
       thor
