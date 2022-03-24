@@ -50,13 +50,11 @@ module ContainerShip
     end
 
     def run_task_options
-      @run_task_options ||= begin
-        if File.exists?(run_task_options_path)
-          JSON.parse(File.read(run_task_options_path), symbolize_names: true)
-        else
-          {}
-        end
-      end
+      @run_task_options ||= if File.exist?(run_task_options_path)
+                              JSON.parse(File.read(run_task_options_path), symbolize_names: true)
+                            else
+                              {}
+                            end
     end
 
     private
