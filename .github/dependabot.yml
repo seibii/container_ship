@@ -7,12 +7,6 @@ updates:
     time: "11:00"
     timezone: Asia/Tokyo
   open-pull-requests-limit: 20
-  reviewers:
-  - amatotsuji
-  - aya-vii
-  - lakesizebyter
-  - arizuk
-  - tadak1
   allow:
   - dependency-type: direct
   - dependency-type: indirect
