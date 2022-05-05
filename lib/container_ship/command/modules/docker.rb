@@ -5,15 +5,15 @@ module ContainerShip
     module Modules
       module Docker
         def push_image(task_definition)
-          puts "docker build -t \"#{task_definition.image_name}:#{task_definition.build_number}\" ."
           sh "docker build -t \"#{task_definition.image_name}:#{task_definition.build_number}\" ."
-          puts "docker push #{task_definition.image_name}:#{task_definition.build_number}"
           sh "docker push #{task_definition.image_name}:#{task_definition.build_number}"
         end
 
         private
 
         def sh(command)
+          puts command
+
           status = nil
           Open3.popen3(command) do |_i, o, e, w|
             o.each { |line| puts line }
