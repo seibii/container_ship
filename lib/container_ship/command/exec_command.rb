@@ -17,7 +17,7 @@ module ContainerShip
       include Modules::Ecs
       include Modules::PrintTask
 
-      def run(cluster_name, task_name, environment, build_number, timeout: nil, no_wait: false)
+      def run(cluster_name, task_name, environment, build_number, timeout: nil, no_wait: false) # rubocop:disable Metrics/ParameterLists
         task_definition = TaskDefinition.new(cluster_name, 'tasks', task_name, environment, build_number)
 
         push_image task_definition
