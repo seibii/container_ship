@@ -17,7 +17,7 @@ module ContainerShip
       include Modules::Ecs
       include Modules::PrintTask
 
-      def run(cluster_name, task_name, environment, build_number, timeout: nil)
+      def run(cluster_name, task_name, environment, build_number, timeout: nil, no_wait: false) # rubocop:disable Metrics/ParameterLists
         task_definition = TaskDefinition.new(cluster_name, 'tasks', task_name, environment, build_number)
 
         push_image task_definition
@@ -29,6 +29,8 @@ module ContainerShip
         task_arn = print_around_task('Sending task request... ') do
           run_task task_definition, revision
         end
+
+        return if no_wait
 
         exit_status = print_around_task('Waiting task is completed... ') do
           wait_task task_definition, task_arn, timeout: timeout

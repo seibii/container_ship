@@ -16,10 +16,17 @@ module ContainerShip
     end
 
     desc 'exec CLUSTER_NAME SERVICE_NAME ENVIRONMENT BUILD_NUMBER', 'exec specified task'
-    method_option 'timeout', desc: 'Timeout seconds for executing the task. Default 5 minutes.'
+    method_option 'timeout', default: 300, type: :numeric, desc: 'Timeout seconds for executing the task.'
+    method_option 'no_wait', default: false, type: :boolean,
+                             desc: 'Exit without waiting for the task execution results. Default false.'
     def exec(cluster_name, service_name, environment, build_number)
-      timeout = options['timeout']&.to_i || 300
-      Command::ExecCommand.new.run(cluster_name, service_name, environment, build_number, timeout: timeout)
+      timeout = options['timeout']
+      no_wait = options['no_wait']
+      Command::ExecCommand.new.run(
+        cluster_name, service_name, environment, build_number,
+        timeout: timeout,
+        no_wait: no_wait
+      )
     end
 
     desc 'version', 'display gem version'
