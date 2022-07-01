@@ -164,7 +164,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    unicode-display_width (2.1.0)
+    unicode-display_width (2.2.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
