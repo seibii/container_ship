@@ -31,7 +31,7 @@ GEM
     aws-sdk-ecs (1.100.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.5.1)
+    aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
     codecov (0.6.0)
       simplecov (>= 0.15, < 0.22)
