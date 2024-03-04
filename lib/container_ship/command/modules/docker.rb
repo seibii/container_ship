@@ -15,10 +15,11 @@ module ContainerShip
           puts command
 
           status = nil
-          Open3.popen3(command) do |_i, o, e, w|
-            o.each { |line| puts line }
-            e.each { |line| puts line }
-            status = w.value
+          Open3.popen3(command) do |_stdin, stdout, stderr, wait_thr|
+            Thread.new(stdout) { |io| io.each { puts _1 } }
+            Thread.new(stderr) { |io| io.each { puts _1 } }
+
+            status = wait_thr.value
           end
           exit(status.exitstatus) unless status.success?
         end
